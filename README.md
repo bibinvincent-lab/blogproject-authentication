@@ -82,6 +82,15 @@ NODE_ENV=development
 
 ---
 
+
+## Available Credentials
+username:  libin@gmail.com
+password:  Libin@12345
+
+username:  bibin@gmail.com
+password:  Bibin@12345
+
+
 ## All navigable links (UI) and files
 
 Navbar links and other primary routes (clickable in the app):
