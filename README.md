@@ -15,8 +15,7 @@ A demo blog and role-based authentication example built with Next.js (App Router
 - [API endpoints](#api-endpoints)
 - [Security & session details](#security--session-details)
 - [Project structure (key files)](#project-structure-key-files)
-- [Troubleshooting](#troubleshooting)
-- [Next steps I can help with](#next-steps-i-can-help-with)
+
 
 ---
 
