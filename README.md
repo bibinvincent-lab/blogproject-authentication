@@ -37,17 +37,13 @@ npm install
 
 2. Create `.env.local` (copy from `.env.example`) and set DB credentials
 
-3. Create the database and apply baseline schema + optional migrations
+3. Create the database. (eg: nextapp) and Import the .sql dump (mysql_dump/backup.sql)
+
 
 ```bash
-# create database (example)
-mysql -u $DB_USER -p -e "CREATE DATABASE IF NOT EXISTS $DB_NAME CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+# import the dump file (example)
+mysql -u username -p my_database < dumpfile.sql
 
-# apply baseline schema
-mysql -u $DB_USER -p $DB_NAME < migrations/000_baseline_schema.sql
-
-# optional: apply security migration provided
-mysql -u $DB_USER -p $DB_NAME < migrations/001_enhance_security.sql
 ```
 
 4. Run development server
@@ -71,20 +67,12 @@ Required vars (example):
 DB_HOST=127.0.0.1
 DB_USER=root
 DB_PASSWORD=change_me
-DB_NAME=blogspace
+DB_NAME=nextapp
 NODE_ENV=development
 ```
 
 ---
 
-## Database & migrations
-
-- Baseline schema: [migrations/000_baseline_schema.sql](migrations/000_baseline_schema.sql)
-- Security migration: [migrations/001_enhance_security.sql](migrations/001_enhance_security.sql)
-
-The app expects at least the `users`, `user_sessions`, and `test` tables. If you start from an empty DB, run the baseline schema first.
-
----
 
 ## Available scripts
 
@@ -101,7 +89,6 @@ Navbar links and other primary routes (clickable in the app):
 - Home: `/` — [src/app/page.js](src/app/page.js)
 - Blog listing: `/blog` — [src/app/blog/page.js](src/app/blog/page.js)
 - Blog detail: `/blog/[slug]` — [src/app/blog/[slug]/page.js](src/app/blog/[slug]/page.js)
-- Alternate blog listing: `/blog1` — [src/app/blog1/page.js](src/app/blog1/page.js)
 - Add User (placeholder): `/add` — [src/app/add/page.js](src/app/add/page.js)
 - Table / Add User: `/tablepage` — [src/app/tablepage/page.js](src/app/tablepage/page.js)
 - Test / List Users: `/test` — [src/app/test/page.js](src/app/test/page.js)
@@ -128,9 +115,6 @@ Navbar implementation: [src/app/components/Navbar.js](src/app/components/Navbar.
 
 - `/blog/[slug]` — Blog detail ([src/app/blog/[slug]/page.js](src/app/blog/[slug]/page.js))
 	- Server-side session validation and device fingerprint validation before rendering the post. Renders `BlogHero` and `BlogContent`.
-
-- `/blog1` — Alternate blog list ([src/app/blog1/page.js](src/app/blog1/page.js))
-	- Similar to `/blog` but shows a different UI (server-side session validation).
 
 - `/tablepage` — Add user interface ([src/app/tablepage/page.js](src/app/tablepage/page.js))
 	- Form to add users and a table that interacts with the `/api/users` CRUD endpoints. Client-side auth enforced via `useAuth`.
@@ -207,19 +191,7 @@ Key files:
 
 ---
 
-## Troubleshooting
 
-- DB connection errors: verify `.env.local` DB settings and that the DB is reachable. Check [src/lib/db.js](src/lib/db.js).
-- Missing tables: run `migrations/000_baseline_schema.sql` before running `001_enhance_security.sql`.
-- Cookies not appearing: development vs production cookie settings differ (`secure` and `sameSite`). See `/api/auth/login` and `middleware.js`.
-
----
-
-## Next steps I can help with
-
-- Add a `.github/workflows` CI workflow to run lint/tests.
-- Create a seed script to populate `users` and `test` tables with sample data.
-- Add a smoke-test script to verify API endpoints (requires running DB).
 
 If you'd like any of the above, tell me which and I'll add them.
 
