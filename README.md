@@ -37,7 +37,7 @@ npm install
 
 2. Create `.env.local` (copy from `.env.example`) and set DB credentials
 
-3. Create the database. (eg: nextapp) and Import the .sql dump (mysql_dump/backup.sql)
+3. Create the database. (eg: nextapp) and Import the .sql dump ([mysql_dump/backup.sql](mysql_dump/backup.sql))
 
 
 ```bash
