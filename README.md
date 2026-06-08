@@ -196,11 +196,9 @@ Key files:
 - Hooks: [src/hooks/useAuth.js](src/hooks/useAuth.js)
 - Server helpers: [src/lib](src/lib)
 - API routes: [src/app/api](src/app/api)
-- Migrations: [migrations](migrations)
+- DB Dump: mysql_dump/backup.sql
 
 ---
 
 
-
-If you'd like any of the above, tell me which and I'll add them.
 
